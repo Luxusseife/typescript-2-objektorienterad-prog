@@ -1,0 +1,26 @@
+// Normalisering.
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Typsnitt.
+$font-stack: 'Lucida Sans Unicode', sans-serif;
+
+// Färger.
+$primary-color: #8c5a7f;
+$secondary-color: #ffffff;
+
+// Knappar.
+@mixin button {
+    width: 5rem;
+    height: 1.75rem;
+    margin: 1rem;
+    background-color: lighten($primary-color, 25%);
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0, 0.65);
+    color: darken($primary-color, 10%);
+    font-weight: bold;
+    cursor: pointer;
+}

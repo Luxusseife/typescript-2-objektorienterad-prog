@@ -1,0 +1,27 @@
+@use 'base' as *;
+
+body {
+    font: 100% $font-stack;
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
+    line-height: 2;
+}
+
+h3 {
+    color: darken($primary-color, 30%);
+}
+
+button {
+    @include button;
+}
+
+#prio-div-1, #prio-div-2, #prio-div-3 {
+    background-color: white;
+    line-height: 2;
+}
+
+.completed {
+    text-decoration: line-through;
+    background-color: lighten($primary-color, 40%); 
+  }
