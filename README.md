@@ -16,10 +16,10 @@ Lösningen är uppbyggd med HTML, CSS (SCSS) och TypeScript samt Parcel.
 - i klassen finns definierade metoder för att hämta, lägga till, spara, markera/avmarkera och radera poster.
 - klassen exporteras till main.ts-filen.
 
-### Om main.js-filen
+### Om main.ts-filen
 - klassen importeras från klassfilen för användning.
 - i funktionen "handleForm" hämtas inputvärdet in och kontrolleras innan ny uppgift läggs till.
-- i funktionen "updateToDoLIst" skapas en ny div/p med angiven uppgift tillsammans med avklarad/ej klar-knapp och radera-knapp samt lägger till i containern för angiven prioritet.
+- i funktionen "updateToDoLIst" skapas en ny div/rubrik med angiven uppgift tillsammans med avklarad/ej klar-knapp och radera-knapp samt lägger till i containern för angiven prioritet.
 - i funktionen "completeToDo" hanteras status. Index hämtas för specifika uppgifter från listan och visar dessa som avklarade/ej klara med motsvarande knapptext samt uppdaterar listan.
 - i funktionen "deleteToDo" hämtas index för den specifika uppgiften, raderar den och uppdaterar listan.
 - i funktionen "deleteAllToDos" hämtas listan in och raderas, sen uppdateras listan (som då är tom).
