@@ -1,27 +1,146 @@
 @use 'base' as *;
 
+// Body inkl. bakgrundsbild.
 body {
-    font: 100% $font-stack;
-    background-color: $primary-color;
-    color: $secondary-color;
-    text-align: center;
-    line-height: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font: bold 100% $font-stack;
+    background-image: url("/src/assets/background.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    // Innehåll på body.
+    .body-container {
+        text-align: center;
+        line-height: 1.5;
+    }
 }
 
-h3 {
-    color: darken($primary-color, 30%);
+// Formulär och submit-knapp.
+.form-container {
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 2rem 0 2rem 0;
+
+    // Rubrik.
+    h1 {
+        color: darken($purple-color, 15%);
+        text-shadow: 2px 2px 5px $white, 2px 2px 15px darken($purple-color, 30%);
+        padding: 2rem;
+    }
+
+    // Label-text.
+    label {
+        color: darken($purple-color, 15%);
+        padding: 1rem;
+    }
+
+    // Inputfält.
+    #todoTask, #todoPriority {
+        width: 12rem;
+        height: 1.5rem;
+        padding-left: 0.5rem;
+        border: 2px solid $purple-color;
+        border-radius: 5px;
+    }
+
+    // Submit-knapp.
+    #submit {
+        @include button;
+        margin: 2rem 1rem 2rem 1rem;
+    }
 }
 
-button {
-    @include button;
+// "Att göra"-listan.
+.todoList {
+    display: grid;
+
+    // Prioritets-containers.
+    .div-container-1 {
+        @include prioCont;
+        color: darken($blue-color, 10%);
+
+        .container {
+            border: 2px dashed $blue-color;
+        }
+    }
+
+    .div-container-2 {
+        @include prioCont;
+        color: darken($pink-color, 10%);
+
+        .container {
+            border: 2px dashed $pink-color;
+        }
+    }
+
+    .div-container-3 {
+        @include prioCont;
+        color: darken($green-color, 10%);
+
+        .container {
+            border: 2px dashed $green-color;
+        }
+    }
 }
 
-#prio-div-1, #prio-div-2, #prio-div-3 {
-    background-color: white;
-    line-height: 2;
+// Container för "radera hela listan"-knapp.
+#deleteAll {
+    display: flex;
+    justify-content: center;
+
+    // Knapp.
+    #deleteAllButton {
+        @include button;
+        width: 12rem;
+        background-color: lighten($purple-color, 20%);
+        border: 2px solid darken($purple-color, 10%);
+        color: darken($purple-color, 30%);
+        margin: 2rem 1rem 2rem 1rem;
+    }
 }
 
+// Avklarad uppgift.
 .completed {
     text-decoration: line-through;
-    background-color: lighten($primary-color, 40%); 
-  }
+    color: $red-color;
+}
+
+// Style för skärmstorlek större än 425px.
+@media (min-width: 426px) {
+    .form-container {
+        max-width: 30rem;
+        margin: 2rem auto 2rem auto;
+        border-radius: 15px;
+    }
+
+    .todoList {
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+
+    .div-container-1, .div-container-2, .div-container-3 {
+        border-radius: 15px;
+    }
+}
+
+// Style för skärmstorlek större än 1024px.
+@media (min-width: 1025px) {
+    .form-container {
+        max-width: 30rem;
+        margin: 2rem auto 2rem auto;
+    }
+
+    .todoList {
+        display: flex; 
+        justify-content: space-around;
+        max-width: 100vw;
+
+        .div-container-1, .div-container-2, .div-container-3 {
+            width: 100%;
+            padding: 1rem;
+            margin: 2rem;
+        }
+    }
+}

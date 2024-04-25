@@ -47,6 +47,15 @@ function handleForm(event) {
     catch (error) {
         console.log(error.message);
     }
+    // Gömmer eller visar "radera hela listan"-knappen utifrån längden på arrayen.
+    if (toDoList.getToDos().length === 0) {
+        // Gömmer knappen.
+        deleteAllButton.style.display = "none";
+    }
+    else {
+        // Visar knappen.
+        deleteAllButton.style.display = "block";
+    }
 }
 // Uppdaterar listan med "att göra"-uppgifter,
 function updateToDoList() {
@@ -68,10 +77,12 @@ function updateToDoList() {
         }
         // Skapar en avklarad/ej klar-knapp och lägger till händelselyssnare.
         var doneButton = document.createElement("button");
+        doneButton.setAttribute("id", "doneButton");
         doneButton.textContent = todo.completed ? "Ej klar" : "Avklarad"; // Kollar av om uppgiften är markerad som klar/ej klar.
         doneButton.addEventListener("click", function () { return completeToDo(index, doneButton); });
         // Skapar en radera-knapp och lägger till händelselyssnare.
         var deleteButton = document.createElement("button");
+        deleteButton.setAttribute("id", "deleteButton");
         deleteButton.textContent = "Radera";
         deleteButton.addEventListener("click", function () { return deleteToDo(index); });
         // Lägger till knapparna till div-containern.
@@ -80,19 +91,39 @@ function updateToDoList() {
         // Lägger till den nya div-containern på rätt plats baserat på prioritet.
         [prio1El, prio2El, prio3El][todo.priority - 1].appendChild(todoDiv);
     });
+    // Gömmer eller visar "radera hela listan"-knappen utifrån längden på arrayen.
+    if (toDoList.getToDos().length === 0) {
+        // Gömmer knappen.
+        deleteAllButton.style.display = "none";
+    }
+    else {
+        // Visar knappen.
+        deleteAllButton.style.display = "block";
+    }
 }
+// Skapar en "radera alla"-knapp och lägger till händelselyssnare.
+var deleteAllButton = document.createElement("button");
+deleteAllButton.setAttribute("id", "deleteAllButton");
+deleteAllButton.textContent = "Radera hela listan";
+deleteAllButton.addEventListener("click", deleteAllToDos);
+// Lägger till knappen i en div.
+deleteAllEl.appendChild(deleteAllButton);
 // Visar en uppgift som avklarad/ej klar och uppdaterar "att göra"-listan.
 function completeToDo(index, button) {
     var todo = toDoList.getToDos()[index];
+    var prioDiv = prio1El || prio2El || prio3El;
     // Villkor; om uppgiften ej är avklarad (default) så visar knappen "Avklarad". 
     if (todo.completed) {
         toDoList.markToDoUnfinished(index);
         button.textContent = "Avklarad";
-        // Annars visas "Ej klar".
+        // Tar bort klassen när uppgiften inte längre är avklarad
+        prioDiv.classList.remove('completed-task');
     }
     else {
         toDoList.markToDoCompleted(index);
         button.textContent = "Ej klar";
+        // Lägg till klassen när uppgiften är avklarad
+        prioDiv.classList.add('completed-task');
     }
     updateToDoList();
 }
@@ -100,4 +131,9 @@ function completeToDo(index, button) {
 function deleteToDo(index) {
     toDoList.deleteToDo(index);
     updateToDoList();
+}
+// Funktion för att radera alla uppgifter.
+function deleteAllToDos() {
+    toDoList.deleteAllToDos();
+    updateToDoList(); // Update the UI to reflect the changes
 }

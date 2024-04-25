@@ -12,42 +12,48 @@
 
 <body>
 
-    <div class="form-container">
-        <h1>Min att göra-lista</h1>
-        <form id="todoForm">
-            <label for="todoTask">Fyll i uppgift:</label>
-            <br>
-            <input type="text" id="todoTask">
-            <br>
-            <label for="todoPriority">Välj prioritet:</label>
-            <br>
-            <select name="priority" id="todoPriority">
-                <option>- - -</option>
-                <option value="1">Behöver göras omgående</option>
-                <option value="2">Behöver göras snart</option>
-                <option value="3">Kan vänta tills tillfälle ges</option>
-            </select>
-            <br>
-            <button id="submit" type="submit">Lägg till</button>
-        </form>
-    </div>
+    <div class="body-container">
+
+        <div class="form-container">
+            <h1>Min att göra-lista</h1>
+            <form id="todoForm">
+                <label for="todoTask">Fyll i uppgift:</label>
+                <br>
+                <input type="text" id="todoTask" placeholder="Ex. klippa gräsmattan">
+                <br>
+                <br>
+                <label for="todoPriority">Välj prioritet:</label>
+                <br>
+                <select name="priority" id="todoPriority">
+                    <option>- - -</option>
+                    <option value="1">Behöver göras omgående</option>
+                    <option value="2">Behöver göras snart</option>
+                    <option value="3">Kan vänta tills tillfälle ges</option>
+                </select>
+                <br>
+                <button id="submit" type="submit">Lägg till</button>
+            </form>
+        </div>
 
 
-    <div class="todoList">
-        <div class="div-container">
-            <h2>Behöver göras omgående</h2>
-            <div id="prio-div-1"></div>
+        <div class="todoList">
+            <div class="div-container-1">
+                <h2>Behöver göras omgående</h2>
+                <div id="prio-div-1"></div>
+            </div>
+            <br>
+            <div class="div-container-2">
+                <h2>Behöver göras snart</h2>
+                <div id="prio-div-2"></div>
+            </div>
+            <br>
+            <div class="div-container-3">
+                <h2>Kan göras när tillfälle ges</h2>
+                <div id="prio-div-3"></div>
+            </div>
         </div>
-        <br>
-        <div class="div-container">
-            <h2>Behöver göras snart</h2>
-            <div id="prio-div-2"></div>
-        </div>
-        <br>
-        <div class="div-container">
-            <h2>Kan göras när tillfälle ges</h2>
-            <div id="prio-div-3"></div>
-        </div>
+
+        <div id="deleteAll"></div>
 
     </div>
 

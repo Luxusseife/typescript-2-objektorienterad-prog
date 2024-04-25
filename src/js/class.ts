@@ -92,4 +92,19 @@ export class ToDoList {
         // Uppdaterar LocalStorage.
         this.saveToLocalStorage();
     }
+
+    // Metod för att radera alla uppgifter.
+    deleteAllToDos(): void {
+        // Hämtar in bekräftelse på att hela listan ska rensas.
+        const confirmation = confirm("Är du säker på att du vill radera hela listan?");
+
+        // Om bekräftelse finnes, raderas listan.
+        if (confirmation) {
+            // Raderar alla uppgifter.
+            this.todos = [];
+
+            // Uppdaterar LocalStorage.
+            this.saveToLocalStorage();
+        }
+    }
 }

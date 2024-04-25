@@ -68,6 +68,18 @@ var ToDoList = /** @class */ (function () {
         // Uppdaterar LocalStorage.
         this.saveToLocalStorage();
     };
+    // Metod för att radera alla uppgifter.
+    ToDoList.prototype.deleteAllToDos = function () {
+        // Hämtar in bekräftelse på att hela listan ska rensas.
+        var confirmation = confirm("Är du säker på att du vill radera hela listan?");
+        // Om bekräftelse finnes, raderas listan.
+        if (confirmation) {
+            // Raderar alla uppgifter.
+            this.todos = [];
+            // Uppdaterar LocalStorage.
+            this.saveToLocalStorage();
+        }
+    };
     return ToDoList;
 }());
 exports.ToDoList = ToDoList;

@@ -9,18 +9,78 @@
 $font-stack: 'Lucida Sans Unicode', sans-serif;
 
 // Färger.
-$primary-color: #8c5a7f;
-$secondary-color: #ffffff;
+$purple-color: #a89edb;
+$blue-color: #6da0f1;
+$pink-color: #e38ae4;
+$red-color: #c56768;
+$green-color: #a4d6b9;
+$white: white;
+$black: black;
 
 // Knappar.
 @mixin button {
-    width: 5rem;
-    height: 1.75rem;
-    margin: 1rem;
-    background-color: lighten($primary-color, 25%);
-    border: 2px solid black;
-    box-shadow: 3px 3px 3px rgb(0, 0, 0, 0.65);
-    color: darken($primary-color, 10%);
+    width: 6rem;
+    height: 2rem;
+    background-color: lighten($purple-color, 20%);
+    border: 2px solid darken($purple-color, 10%);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(131, 122, 179, 0.75);
+    color: darken($purple-color, 30%);
     font-weight: bold;
+    font-size: 18px;
     cursor: pointer;
+}
+
+// Prioritets-containers.
+@mixin prioCont {
+    // bakgrund med opacitet.
+    background-color: rgba(255, 255, 255, 0.75);
+
+    h2 {
+        margin: 0.5rem 0 0 0;
+        text-decoration: underline;
+    }
+
+    // "Att göra"-poster.
+    #prio-div-1,
+    #prio-div-2,
+    #prio-div-3 {
+        border-radius: 10px;
+        margin: 2rem 0 2rem 0;
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 30px 30px;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 0 1rem 1rem 1rem;
+
+            h3 {
+                grid-row: 1 / 3;
+                text-shadow: none;
+            }
+        }
+    }
+
+    // Klar/ej-knapp.
+    #doneButton {
+        @include button;
+        background-color: lighten($green-color, 20%);
+        border: 2px solid darken($green-color, 10%);
+        color: darken($green-color, 30%);
+        grid-column-start: 2;
+        margin: 0 0 0.5rem auto;
+    }
+
+    // Radera-knapp.
+    #deleteButton {
+        @include button;
+        background-color: lighten($red-color, 30%);
+        border: 2px solid $red-color;
+        color: darken($red-color, 30%);
+        grid-column-start: 2;
+        margin: 0.5rem 0 0 auto;
+    }
 }

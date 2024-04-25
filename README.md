@@ -22,11 +22,13 @@ Lösningen är uppbyggd med HTML, CSS (SCSS) och TypeScript samt Parcel.
 - i funktionen "updateToDoLIst" skapas en ny div/p med angiven uppgift tillsammans med avklarad/ej klar-knapp och radera-knapp samt lägger till i containern för angiven prioritet.
 - i funktionen "completeToDo" hanteras status. Index hämtas för specifika uppgifter från listan och visar dessa som avklarade/ej klara med motsvarande knapptext samt uppdaterar listan.
 - i funktionen "deleteToDo" hämtas index för den specifika uppgiften, raderar den och uppdaterar listan.
+- i funktionen "deleteAllToDos" hämtas listan in och raderas, sen uppdateras listan (som då är tom).
 
 ## Användning
 
 - fyll i en uppgift och ange prioritet. Klicka på lägg till och uppgiften läggs till i listan för vald prioritet. Uppgiften lagras i localStorage.
 - uppgiften kan markeras som avklarad via knappen "Avklarad" eller raderas med knappen "Radera". Vid radering rensas localStorage.
 - när uppgiften markerats som avklarad ändras texten på knappen till "Ej klar" vilken används för att avmarkera uppgiften igen.
+- listan med uppgifter (med olika prioritet) kan raderas med knappen "Radera hela listan" vilket rensar listan samt localStorage.
 
 #### _Skapad av Jenny Lind, jeli2308_.
